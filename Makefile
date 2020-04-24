@@ -34,7 +34,7 @@ clean:
 
 build: add-version pre-build install-deps
 	@echo "Building"
-	@go build -o ./build/&(BASE_FILE_NAME) $(LDFLAGS) $(PACKAGE)
+	@go build -o ./build/$(BASE_FILE_NAME) $(LDFLAGS) $(PACKAGE)
 	@echo "Done"
 
 check-docker:

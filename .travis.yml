@@ -4,6 +4,13 @@ go:
   - 1.13.x
   - 1.14.x
   - tip
-
 script:
   - make build
+deploy:
+  provider: releases
+  api_key:
+    secure: L7AJv77QtNLZHm6MMEYhCmCoFzJ5Sfxwts+1gPQibbvz0kEEfhX+jAyyp7bKYO6DsY/U/oB5N5mzWgnm4EKgMGq3/nIasKs9gPf3c7a52Znvm34gbTswpGrtwkqNn+LSJovSRL0OFySzG7d2OASNTOSMTBCUdgz8Koss4gmHVKCgNTaHh33CLKXZcsCujMsVy6CqWNgVQkKXs8zdnSvPJ5km2zYwHf8MVbR3q0wJP+Mtcv6HRLZNycDD324LL3dRxYwICWM+O2onDWAh59B6Ss+tS2rkQaeA+LTLQoXFowHDj9L1XR75iK6mv9Lcx84s+ZgPx5f/v3PS0HtEVc8pkmxNy3bK14Z/lFfJIyWepYRPT2GjGnEQibQj9TXSMLUJhveY+wPme8jcH2zpADmNT1EDd+eZO6akcU3vhJ9yfVBArzh+09NVb0/CMdv/+AkktwV7OHXkKYFWsDDRwdiAyymb/azvobhEHRQ7zwSGPkoH8z1mq6P/gzt7LUHQjn0Z2V0ZZuC3lFIlnSUfRuKt1N986J11JJiSrhcUQeYP2fEX2V/DqMchrLcR+O129LiFA9n2Fiey3CzHTE6AjPrAAy9T2lgR0QMhbNPpUlfciJFw4WMI7OP19YCRUTDxOE2s3rwA/vHfJZIXWeKKT5fQSQI8PS1Gsux5wm39OzVKgJE=
+  file: linesink
+  on:
+    repo: bahadrix/linesink
+    tags: true

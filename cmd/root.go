@@ -46,6 +46,8 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
+	rootCmd.Version = fmt.Sprintf("%s-%s", AppVersion, AppBuild)
+
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.linesink.yaml)")
 
 	// Cobra also supports local flags, which will only run

@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -46,6 +45,8 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
+	rootCmd.Version = fmt.Sprintf("%s-%s", AppVersion, AppBuild)
+
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.linesink.yaml)")
 
 	// Cobra also supports local flags, which will only run
@@ -80,14 +81,11 @@ func initConfig() {
 }
 
 func readPipedLines(channelSize int) (lineChannel chan []byte, err error) {
-	info, err := os.Stdin.Stat()
+	_, err = os.Stdin.Stat()
 	if err != nil {
 		return
 	}
-	if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
-		err = errors.New("this tool is intended to work with pipes")
-		return
-	}
+
 
 	reader := bufio.NewReader(os.Stdin)
 	lineChannel = make(chan []byte, channelSize)

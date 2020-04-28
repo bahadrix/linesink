@@ -17,3 +17,5 @@
 # vendor/
 
 /.idea
+.DS_Store
+/build
